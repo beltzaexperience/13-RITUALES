@@ -11,17 +11,15 @@ html, body {
   width: 100%;
   min-height: 100vh;
   background: #0a0a0a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-family: 'Bebas Neue', sans-serif;
+  overflow-x: hidden;
 }
 
 #root {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: flex-start;
   padding: 32px 16px;
 }
 
