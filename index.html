@@ -183,8 +183,8 @@ function Ticker({ items, bg, textColor, dotColor, size=17, padding='9px 28px' })
   ));
   return (
     <div style={{background:bg, overflow:'hidden', paddingTop:'13px', paddingBottom:'13px'}}>
-      <style>{`@keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
-      <div style={{display:'flex', width:'max-content', animation:'marqueeScroll 28s linear infinite'}}>
+      <style>{`@keyframes mq { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
+      <div style={{display:'flex', width:'max-content', animation:'mq 28s linear infinite'}}>
         {renderItems('a')}
         {renderItems('b')}
       </div>
@@ -418,7 +418,7 @@ function LayoutVertical({ p, TreeComp }) {
           <span style={{color:p.cream}}> · </span>
           <a href="http://dubbeat.beltzarecords.com/" target="_blank" style={{color:p.amber, textDecoration:'none'}}>DUB²BEAT</a>
           <span style={{color:p.cream}}> · </span>
-          <a href="https://beltzaexperience.github.io/UR-SAPIENS/" target="_blank" style={{color:p.amber, textDecoration:'none'}}>UR-SAPIENS</a>
+          <a href="https://beltzaexperience.github.io/UR-SAPIENS/" target="_blank" style={{color:'#c0392b', textDecoration:'none'}}>UR</a><span style={{color:p.amber}}>-SAPIENS</span>
         </div>
       </div>
     </div>
