@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LOS RASTROS DE JÚPITER — MAYO 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100%; min-height: 100vh; background: #141a14; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; }
-  #root { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 32px 16px; }
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Los Rastros de Júpiter — 4º Aniversario · Doneztebe · Mayo 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="root"></div>
@@ -370,7 +364,7 @@ function LayoutVertical({ p, TreeComp }) {
   }, []);
 
   return (
-    <div style={{width:1000, background:p.panel, fontFamily:"'Bebas Neue',sans-serif", overflow:'hidden', boxShadow:'0 24px 80px rgba(0,0,0,0.6)'}}>
+    <div style={{width:1100, background:p.panel, fontFamily:"'Bebas Neue',sans-serif", overflow:'hidden', boxShadow:'0 24px 80px rgba(0,0,0,0.6)'}}>
 
       <div style={{background:p.panelDark, padding:'48px 40px 24px', position:'relative'}}>
         <div id="vertikaltop" style={{width:'100%'}}>
@@ -408,7 +402,7 @@ function LayoutVertical({ p, TreeComp }) {
 
       </div>
 
-                  <Ticker items={['BROCANTE','·','VERMÚ','·','MÚSICA','·','CINE','·','TAROT','·','DISCOS','·','OBJETOS SINGULARES','·','COMIDA DE CALIDAD','·','OTRAS ZARANDAJAS','·','AMBIENTE FÁCIL','·','SMART DRESS STYLE','·','DONZTEBE','·','NAFARROA','·','4º ANIVERSARIO','·','MAYO 2026','·','ULTRAMARINOS PARROQUIA 13','·','BELTZA EXPERIENCE','·','AZKEN MUGA OF SOUL']} bg={p.amber} textColor={p.black} dotColor={p.panelDark} size={22}/>
+                  <Ticker items={['BROCANTE','·','VERMÚ','·','MÚSICA','·','CINE','·','TAROT','·','DISCOS','·','OBJETOS SINGULARES','·','COMIDA DE CALIDAD','·','OTRAS ZARANDAJAS','·','AMBIENTE FÁCIL','·','SMART DRESS STYLE','·','DONEZTEBE','·','NAFARROA','·','4º ANIVERSARIO','·','MAYO 2026','·','ULTRAMARINOS PARROQUIA 13','·','BELTZA EXPERIENCE','·','AZKEN MUGA OF SOUL']} bg={p.amber} textColor={p.black} dotColor={p.panelDark} size={22}/>
 
       {/* FOOTER — línea única justificada, estilo UR-BOOK */}
       <div id="footercontainer" style={{background:p.panelDark, padding:'34px 40px 18px'}}>
@@ -416,7 +410,7 @@ function LayoutVertical({ p, TreeComp }) {
           id="footerlinea"
           style={{fontSize:28, display:'inline-block', whiteSpace:'nowrap', transformOrigin:'left top', lineHeight:1, letterSpacing:'0.12em', fontFamily:"'Bebas Neue',sans-serif"}}
         >
-          <a href="http://beltzarecords.com" target="_blank" style={{color:p.amber, textDecoration:'none'}}>BELTZA RECORDS</a>
+          <a href="https://beltzarecords.com" target="_blank" style={{color:p.amber, textDecoration:'none'}}>BELTZA RECORDS</a>
           <span style={{color:p.cream}}> · DONOSTIA _ DONEZTEBE · </span>
           <a href="https://beltzaexperience.github.io/Manifiesto-Beltza/" target="_blank" style={{color:p.amber, textDecoration:'none'}}>MANIFIESTO</a>
           <span style={{color:p.cream}}> · </span>
@@ -443,17 +437,6 @@ function App() {
       {t.layout === 'moderno'  && <LayoutModerno  p={p} TreeComp={TreeComp}/>}
       {t.layout === 'vertical' && <LayoutVertical p={p} TreeComp={TreeComp}/>}
 
-      <TweaksPanel>
-        <TweakSection title="Paleta de color"/>
-        <TweakRadio id="palette" value={t.palette} onChange={function(v){setTweak('palette',v)}}
-          options={[{value:'verde',label:'Verde'},{value:'azul',label:'Azul'},{value:'ocre',label:'Ocre'}]}/>
-        <TweakSection title="Árbol"/>
-        <TweakRadio id="tree" value={t.tree} onChange={function(v){setTweak('tree',v)}}
-          options={[{value:'geometrico',label:'Geométrico'},{value:'lineal',label:'Lineal'},{value:'cosmico',label:'Cósmico'}]}/>
-        <TweakSection title="Layout"/>
-        <TweakRadio id="layout" value={t.layout} onChange={function(v){setTweak('layout',v)}}
-          options={[{value:'clasico',label:'Clásico'},{value:'moderno',label:'Moderno'},{value:'vertical',label:'Vertical'}]}/>
-      </TweaksPanel>
     </React.Fragment>
   );
 }
