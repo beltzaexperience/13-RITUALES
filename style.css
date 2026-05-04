@@ -32,3 +32,19 @@ a { cursor: pointer; }
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+/* ── RESPONSIVE SCALER ───────────────────────────────────────────────────── */
+/* El cartel es 1100px fijo — en pantallas pequeñas se escala proporcionalmente */
+
+.poster-scaler {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 24px 0;
+}
+
+.poster-scaler > div {
+  transform-origin: top center;
+  transition: none;
+}
