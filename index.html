@@ -15,12 +15,6 @@
 
 <script type="text/babel">
 
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "palette": "azul",
-  "tree": "lineal",
-  "layout": "vertical"
-}/*EDITMODE-END*/;
-
 const PALETTES = {
   verde: { bg:'#1e3320', panelDark:'#2d4a2d', red:'#b01a1a', amber:'#c8922a', black:'#0c0c08', cream:'#f0e8d8', panel:'#f0e8d8' },
   azul:  { bg:'#0a1628', panelDark:'#142240', red:'#b01a1a', amber:'#d4900a', black:'#060e1c', cream:'#e8ecf4', panel:'#e8ecf4' },
@@ -391,16 +385,11 @@ function LayoutVertical({ p, TreeComp }) {
 
 // ── APP ──────────────────────────────────────────────────────────────────────
 function App() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-  const p = PALETTES[t.palette] || PALETTES.verde;
-  const TreeComp = t.tree === 'lineal' ? TreeLineal : t.tree === 'cosmico' ? TreeCosmico : TreeGeometrico;
-
+  const p = PALETTES['azul'];
+  const TreeComp = TreeGeometrico;
   return (
     <React.Fragment>
-      {t.layout === 'clasico'  && <LayoutClasico  p={p} TreeComp={TreeComp}/>}
-      {t.layout === 'moderno'  && <LayoutModerno  p={p} TreeComp={TreeComp}/>}
-      {t.layout === 'vertical' && <LayoutVertical p={p} TreeComp={TreeComp}/>}
-
+      <LayoutVertical p={p} TreeComp={TreeComp}/>
     </React.Fragment>
   );
 }
