@@ -1,19 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Los Rastros de Júpiter — 4º Aniversario · Doneztebe · Mayo 2026</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="style.css"/>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LOS RASTROS DE JÚPITER — MAYO 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; min-height: 100vh; background: #141a14; display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; }
+  #root { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 32px 16px; }
+</style>
 </head>
 <body>
-<div id="root" class="poster-scaler"></div>
-
+<div id="root"></div>
 <script type="text/babel">
+// ── TWEAKS PANEL ─────────────────────────────────────────────────────────────
+function useTweaks(defaults) {
+  const [t, setT] = React.useState(defaults);
+  function setTweak(k, v) { setT(function(prev){ var n={}; Object.assign(n,prev); n[k]=v; return n; }); }
+  return [t, setTweak];
+}
+
+function TweaksPanel({ children }) {
+  return (
+    <div style={{position:'fixed',bottom:16,right:16,background:'rgba(10,10,10,0.92)',border:'1px solid #333',borderRadius:8,padding:'12px 16px',zIndex:9999,fontFamily:'sans-serif',fontSize:12,color:'#ccc',minWidth:200,backdropFilter:'blur(6px)'}}>
+      <div style={{fontWeight:700,letterSpacing:'0.1em',marginBottom:10,color:'#fff',fontSize:11,textTransform:'uppercase'}}>⚙ Ajustes</div>
+      {children}
+    </div>
+  );
+}
+
+function TweakSection({ title }) {
+  return <div style={{marginTop:10,marginBottom:4,fontWeight:700,color:'#aaa',fontSize:10,letterSpacing:'0.15em',textTransform:'uppercase'}}>{title}</div>;
+}
+
+function TweakRadio({ id, value, onChange, options }) {
+  return (
+    <div style={{display:'flex',gap:6,flexWrap:'wrap'}}>
+      {options.map(function(o){
+        var active = value === o.value;
+        return (
+          <button key={o.value} onClick={function(){ onChange(o.value); }}
+            style={{padding:'3px 10px',borderRadius:4,border:'1px solid '+(active?'#c8922a':'#444'),background:active?'#c8922a':'transparent',color:active?'#000':'#ccc',cursor:'pointer',fontSize:11,fontFamily:'sans-serif'}}>
+            {o.label}
+          </button>
+        );
+      })}
+    </div>
+  );
+}
+</script>
+<script type="text/babel">
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "palette": "azul",
+  "tree": "lineal",
+  "layout": "vertical"
+}/*EDITMODE-END*/;
 
 const PALETTES = {
   verde: { bg:'#1e3320', panelDark:'#2d4a2d', red:'#b01a1a', amber:'#c8922a', black:'#0c0c08', cream:'#f0e8d8', panel:'#f0e8d8' },
@@ -385,11 +433,16 @@ function LayoutVertical({ p, TreeComp }) {
 
 // ── APP ──────────────────────────────────────────────────────────────────────
 function App() {
-  const p = PALETTES['azul'];
-  const TreeComp = TreeGeometrico;
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const p = PALETTES[t.palette] || PALETTES.verde;
+  const TreeComp = t.tree === 'lineal' ? TreeLineal : t.tree === 'cosmico' ? TreeCosmico : TreeGeometrico;
+
   return (
     <React.Fragment>
-      <LayoutVertical p={p} TreeComp={TreeComp}/>
+      {t.layout === 'clasico'  && <LayoutClasico  p={p} TreeComp={TreeComp}/>}
+      {t.layout === 'moderno'  && <LayoutModerno  p={p} TreeComp={TreeComp}/>}
+      {t.layout === 'vertical' && <LayoutVertical p={p} TreeComp={TreeComp}/>}
+
     </React.Fragment>
   );
 }
@@ -401,26 +454,21 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
   function scaleCartel() {
     var el = document.querySelector('#root > div');
     if (!el) return;
-    var wrapper = el.parentElement;
     var maxW = 1100;
-    var winW = Math.min(window.innerWidth, window.screen.width);
+    var winW = window.innerWidth;
     var scale = winW >= maxW ? 1 : winW / maxW;
     el.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
     el.style.transformOrigin = 'top center';
-    // Adjust wrapper height so it doesn't leave gap below
+    var wrapper = el.parentElement;
     if (scale < 1) {
-      var naturalH = el.getBoundingClientRect().height / scale;
-      wrapper.style.height = (naturalH * scale + 48) + 'px';
+      wrapper.style.height = (el.getBoundingClientRect().height / scale * scale + 48) + 'px';
       wrapper.style.overflow = 'hidden';
     } else {
       wrapper.style.height = '';
       wrapper.style.overflow = '';
     }
   }
-  window.addEventListener('load', function() {
-    setTimeout(scaleCartel, 200);
-    setTimeout(scaleCartel, 800);
-  });
+  window.addEventListener('load', function(){ setTimeout(scaleCartel,300); setTimeout(scaleCartel,1200); });
   window.addEventListener('resize', scaleCartel);
 </script>
 </body>
