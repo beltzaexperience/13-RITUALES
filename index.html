@@ -15,7 +15,6 @@
   </div>
 
   <script>
-    // ── ScaleX justify text ───────────────────────────────────────────────
     function fit() {
       var container = document.getElementById('vertikaltop');
       if (!container) return;
@@ -37,26 +36,40 @@
       }
     }
 
-    // ── Responsive scale ─────────────────────────────────────────────────
     function scaleCartel() {
-      var el = document.getElementById('cartel');
-      if (!el) return;
-      var winW = window.innerWidth;
-      var scale = winW >= 1100 ? 1 : winW / 1100;
-      el.style.transform = scale < 1 ? 'scale(' + scale + ')' : '';
-      el.style.transformOrigin = 'top center';
+      var cartel = document.getElementById('cartel');
       var wrapper = document.getElementById('root');
-      if (scale < 1) {
-        var h = el.offsetHeight;
-        wrapper.style.height = (h * scale + 32) + 'px';
+      if (!cartel || !wrapper) return;
+      var winW = window.innerWidth;
+      var naturalW = 1100;
+
+      // Reset first to measure natural height
+      cartel.style.transform = '';
+      cartel.style.transformOrigin = '';
+      cartel.style.marginLeft = '';
+      wrapper.style.height = '';
+      wrapper.style.overflow = '';
+
+      if (winW < naturalW) {
+        var scale = winW / naturalW;
+        var naturalH = cartel.offsetHeight;
+        // Scale from top-left, then center with margin
+        cartel.style.transformOrigin = 'top left';
+        cartel.style.transform = 'scale(' + scale + ')';
+        cartel.style.marginLeft = ((winW - naturalW) / 2) + 'px';
+        // Wrapper clips to exactly the scaled height
+        wrapper.style.height = (naturalH * scale) + 'px';
+        wrapper.style.overflow = 'hidden';
+        wrapper.style.padding = '0';
       } else {
-        wrapper.style.height = '';
+        wrapper.style.padding = '32px 16px';
       }
     }
 
     document.fonts.ready.then(function() {
-      fit(); scaleCartel();
-      setTimeout(function(){ fit(); scaleCartel(); }, 500);
+      fit();
+      scaleCartel();
+      setTimeout(function(){ fit(); scaleCartel(); }, 400);
     });
     window.addEventListener('resize', function(){ fit(); scaleCartel(); });
   </script>
