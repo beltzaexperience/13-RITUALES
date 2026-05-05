@@ -53,15 +53,20 @@
       if (winW < naturalW) {
         var scale = winW / naturalW;
         var naturalH = cartel.offsetHeight;
-        // Scale from top-left, then center with margin
-        cartel.style.transformOrigin = 'top left';
-        cartel.style.transform = 'scale(' + scale + ')';
+        // marginLeft centers the 1100px element: its midpoint lands at viewport center.
+        // transformOrigin 'top center' then scales from that same midpoint.
+        // Both lines are required — removing either one breaks centering.
         cartel.style.marginLeft = ((winW - naturalW) / 2) + 'px';
-        // Wrapper clips to exactly the scaled height
+        cartel.style.transformOrigin = 'top center';
+        cartel.style.transform = 'scale(' + scale + ')';
+        // CSS transform doesn't shrink layout height — force the wrapper to match
         wrapper.style.height = (naturalH * scale) + 'px';
         wrapper.style.overflow = 'hidden';
         wrapper.style.padding = '0';
       } else {
+        cartel.style.transform = '';
+        cartel.style.transformOrigin = '';
+        cartel.style.marginLeft = '';
         wrapper.style.padding = '32px 16px';
       }
     }
