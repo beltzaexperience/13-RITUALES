@@ -9,11 +9,12 @@ https://beltzaexperience.github.io/13-RITUALES/
 ## Estructura de archivos
 ```
 13-RITUALES/
-├── index.html                     ← homepage 13 Rituales
-├── style.css                      ← estilos separados (pluma Apache)
-├── logo13.png                     ← logo 13 extraído del Manifiesto
-├── beltza-puno.png                ← logo puño Beltza
-├── rastros-jupiter-05-26.html     ← cartel Rastros de Júpiter Mayo 2026
+├── index.html                     ← homepage
+├── style.css                      ← estilos separados
+├── logo13.png                     ← logo 13
+├── logo-p13-circle.svg            ← logo circular P13 (favicon + intro)
+├── beltza-puno.png                ← puño Beltza
+├── rastros-jupiter-05-26.html     ← cartel Mayo 2026
 └── (futuros carteles .html)
 ```
 
@@ -25,7 +26,6 @@ https://beltzaexperience.github.io/13-RITUALES/
 | Magic Bus | beltzaexperience.github.io/magic-bus/ | magic-bus |
 | 13 Rituales | beltzaexperience.github.io/13-RITUALES/ | 13-RITUALES |
 | DUB²BEAT | dubbeat.beltzarecords.com | DUB2BEAT-PHOTOGRAPHY |
-| beltzarecords.com | www.beltzarecords.com | (servidor Karlos) |
 
 ---
 
@@ -33,166 +33,128 @@ https://beltzaexperience.github.io/13-RITUALES/
 
 ### Colores
 ```css
---black:  #0a0a0a   /* fondo principal */
---white:  #f2ede6   /* texto principal */
---red:    #b01a1a   /* rojo sangre */
---amber:  #c8922a   /* ámbar links */
---muted:  #666      /* texto secundario */
+--black:  #0a0a0a
+--white:  #f2ede6
+--red:    #b01a1a
+--amber:  #c8922a
 ```
-Color intro: `#82C8E5` (azul cielo)
-Color cartel Rastros: `#142240` (azul marino) · fondo web cartel: `#0F4336` (verde musgo)
+Intro: `#82C8E5` · Cartel: `#142240` · Fondo cartel web: `#0F4336`
 
-### Tipografías (Google Fonts)
-- **Bebas Neue** — títulos, brand slash, topband, labels
-- **Courier Prime** — cuerpo de texto, captions
-- **Playfair Display** — títulos hero
+### Tipografías
+- **Bebas Neue** — títulos, brand slash, topband
+- **Courier Prime** — cuerpo texto (justificado en intro)
+- **Playfair Display** — hero, testimonios
 
 ---
 
-## Estructura del index.html
+## Estructura index.html
 
 ### 1. TOPBAND
-```
-BELTZARECORDS.COM · DONOSTIA _ DONEZTEBE  |  MANIFIESTO · MAGIC BUS · DUB²BEAT · UR-SAPIENS
-```
-- Font: Bebas Neue `clamp(1.07rem,2.25vw,1.47rem)` · letter-spacing: 0.15em
-- Padding: `1.1rem clamp(1rem,4vw,3rem)`
-- Links en ámbar · `²` de DUB en rojo · `flex-wrap:wrap`
+`BELTZARECORDS.COM · DONOSTIA _ DONEZTEBE | MANIFIESTO · MAGIC BUS · DUB²BEAT · UR-SAPIENS`
+- Bebas Neue `clamp(1.07rem,2.25vw,1.47rem)` · padding `1.1rem clamp(1rem,4vw,3rem)`
+- Links ámbar · `²` rojo · `flex-wrap:wrap`
 
-### 2. BRAND SLASH (fondo rojo)
-```
-[logo13.png]  &nbsp;&nbsp;  RITUALES  &nbsp;&nbsp;  +  &nbsp;&nbsp;  EJERCICIOS  &nbsp;&nbsp;  BELTZA  &nbsp;&nbsp;  [beltza-puno.png]
-```
-- Separadores: `&nbsp;&nbsp;` entre cada elemento
-- Logo 13: `logo13.png` · `clamp(3.2rem,9vw,8rem)`
-- RITUALES / EJERCICIOS: `.b-eventos` — Bebas Neue caja negra texto rojo
-- `+`: blanco · `clamp(5rem,14vw,12rem)`
-- BELTZA: sin caja · negro · `clamp(2.8rem,7.8vw,6.5rem)`
-- Puño: `beltza-puno.png` desde repo
-- Todo centrado: `justify-content:center`
+### 2. BRAND SLASH (fondo rojo, centrado)
+`[logo13.png] &nbsp;&nbsp; RITUALES &nbsp;&nbsp; + &nbsp;&nbsp; EJERCICIOS &nbsp;&nbsp; BELTZA &nbsp;&nbsp; [beltza-puno.png]`
+- Logo 13: `clamp(3.2rem,9vw,8rem)` · RITUALES/EJERCICIOS: `.b-eventos` (caja negra texto rojo)
+- `+`: blanco `clamp(5rem,14vw,12rem)` · BELTZA: sin caja negro `clamp(2.8rem,7.8vw,6.5rem)`
+- Puño: `beltza-puno.png` · Todo `justify-content:center`
 
-### 3. MARQUEE TOP (fondo negro)
-- Texto blanco · mismo tamaño topband · mismo padding
-- Contenido: 13 RITUALES · EJERCICIOS BELTZA · BROCANTE · MÚSICA...
+### 3. MARQUEE TOP — negro, texto blanco, 55s
 
-### 4. HERO (foto completa sin recorte)
-- Foto: Ultramarinos Parroquia 13 fachada + letrero verde
-- **Texto arriba** `.hero-eyebrow-top` — rojo negrita:
-  `Doneztebe · Nafarroa / Azken Muga of Soul`
-- **Texto abajo** `.hero-title` — Playfair itálica blanca:
-  `Rituales de CultURa Popular. / Ejercicios del Espíritu Beltza.`
-  (UR en rojo)
+### 4. HERO — foto completa sin recorte
+- Foto: fachada Ultramarinos Parroquia 13 (Flickr)
+- `.hero-eyebrow-top`: rojo negrita arriba: `Doneztebe · Nafarroa / Azken Muga of Soul`
+- `.hero-title`: Playfair blanca abajo: `Rituales de CultURa Popular. / Ejercicios del Espíritu Beltza.`
 
-### 5. INTRO (fondo azul #82C8E5)
-- Label rojo: `Ejercicios Espirituales de Cult ur a Popular · Doneztebe · Nafarroa`
-- Cuerpo: texto Vudú-Beat, Xabatenea Etxea, Ritualismo POP, Smart Dress Style
-- Ancho completo, sin columna lateral
+### 5. INTRO — fondo `#82C8E5`, grid `2fr 1fr`
+- Columna izq: label rojo + texto Courier Prime justificado `clamp(1.1rem,1.55vw,1.27rem)`
+- Columna drch: logo circular P13 al 75%
 
 ### 6. PHOTO MARQUEE
-- Clase: `.foto-marquee-wrap` / `.foto-marquee-track`
-- Velocidad: 60s (lento)
-- Franjas rojas 7px arriba y abajo
-- Arranca solo tras `window.load` (espera a que carguen las fotos)
-- Sin pausa por click (conflictos resueltos eliminando toggle)
-- 18 fotos únicas mezcladas en random, duplicadas para loop suave
+- `.foto-marquee-wrap` / `.foto-marquee-track` · 60s · franjas rojas 7px
+- Arranca tras `window.load` · sin pausa
+- 13 fotos únicas duplicadas = 26 en track
 
 ### 7. EVENTS GRID (masonry)
-- `columns: 3` · 2 en tablet · 1 en móvil
-- Cada tarjeta: borde rojo 2px · padding 4px interior
-- Pie de foto fondo `#142240` (azul cartel)
-- Título: Bebas blanco · `flex:1` · `text-overflow:ellipsis`
-- Link: **Ver →** en ámbar · `flex-shrink:0`
-- Contador dinámico `001` — suma automáticamente con cada cartel añadido
+- `columns:3` · gap `1.2rem` · `break-inside:avoid`
+- Tarjetas: borde rojo 2px · padding 4px · pie fondo `#142240`
+- Título: `flex:1` `text-overflow:ellipsis` · Link: **Ver →** ámbar `flex-shrink:0`
+- Testimonios: `rgba(176,26,26,0.04)` borde ámbar · Playfair itálica blanca
+- Contador dinámico (cuenta `.event-card`)
+- Header: `010 RITUALES VUDÚ-BEAT + EJERCICIOS AFRO-ESPIRITUALES` centrado
+- Botón **CRONOLÓGICO** — ordena por `data-fecha` asc/desc
 
-### 8. MARQUEE BOTTOM
-- Mismo estilo que marquee top
-- Línea roja 4px encima
-- Velocidad: 55s
+### 8. MARQUEE BOTTOM — mismo que top · línea roja 4px encima
 
-### 9. FOOTER (clon de topband)
-- Misma estructura y tamaño que topband
-- Línea roja 4px encima
-- Coords: `clamp(0.95rem,1.6vw,1.2rem)` en blanco
+### 9. PANORÁMICA — foto ancho completo entre marquee y footer
+
+### 10. FOOTER — clon topband · línea roja 4px encima · coords blancas
 
 ---
 
-## CSS — Clases principales
-
-| Clase | Uso |
-|---|---|
-| `.topband` | Barra superior/inferior navegación |
-| `.brand-slash` | Título principal rojo |
-| `.b-eventos` | Bebas caja negra texto rojo |
-| `.marquee-bar / .marquee-inner` | Marquee texto |
-| `.hero` | Foto completa sin recorte |
-| `.hero-eyebrow-top` | Texto rojo arriba foto |
-| `.hero-title` | Título Playfair abajo foto |
-| `.intro` | Sección azul con texto |
-| `.foto-marquee-wrap / .foto-marquee-track` | Marquee de fotos |
-| `.events-section` | Sección grid masonry |
-| `.event-card` | Tarjeta cartel |
-| `.event-card-body` | Pie azul de tarjeta |
-| `.footer` | Footer clon topband |
-| `.footer-coords` | Coordenadas GPS blancas |
-
----
-
-## Carteles — Convención de nombres
-```
-nombre-evento-MM-AA.html
-```
-Ejemplo: `rastros-jupiter-05-26.html`
-
-### Carteles existentes
-| Archivo | Evento | Fecha |
+## Carteles en el grid (orden HTML, más reciente primero)
+| data-fecha | Título | Link |
 |---|---|---|
-| `rastros-jupiter-05-26.html` | 4º Aniversario Los Rastros de Júpiter | 30 Mayo 2026 |
+| 2026-05 | Rastros de Júpiter | `13-RITUALES/rastros-jupiter-05-26.html` |
+| 2026-01 | Rastros de Júpiter | beltzablog/740 |
+| 2025-12 | Amairu Bizi · Ripe Red Apple | beltzablog/737 |
+| 2025-08 | Talleres Heriötza | beltzablog/732 |
+| 2025-08 | Rastros de Júpiter | beltzablog/730 |
+| 2025-05 | Rastros de Júpiter | beltzablog/729 |
+| 2025-03 | Amairu Bizi · NI | beltzablog/731 |
+| 2025-03 | Rastros de Júpiter (cartel) | beltzablog/726 |
+| 2025-03 | La Momia Trio Ensemble | beltzablog/726 |
+| 2025-01 | Amairu Bizi · Joseba Irazoki | beltzablog/723 |
+| 2024-11 | Rastros de Júpiter | beltzablog/722 |
+| 2024-10 | Amairu Bizi · Victor Herrero | beltzablog/721 |
+| 2024-08 | El Circo de Júpiter | beltzablog/688 |
 
-### Añadir nuevo cartel
-1. Subir `.html` al repo 13-RITUALES con la convención de nombres
-2. Añadir tarjeta en `.events-grid` del `index.html`
-3. El contador `001` sube automáticamente
+### Testimonios intercalados
+- Enriqueta (Mayo 2025) — entre Rastros Mayo 2026 y Rastros Enero 2026
+- Kikillo (Mayo 2025) — al final del grid
+
+---
+
+## Añadir nuevo cartel
+1. Subir `.html` o foto a repo / Flickr
+2. Añadir tarjeta en `.events-grid` con `data-fecha="AAAA-MM"`
+3. Contador sube automáticamente
 4. Actualizar link en Magic Bus si tiene post
 
 ---
 
 ## Cartel rastros-jupiter-05-26.html
-- Fondo web: `#0F4336` (verde musgo) — inline en `<style>` del `<head>`
-- Sin `link` a `style.css` externo — todo inline
-- `image.jpg` carga desde el mismo repo 13-RITUALES
-- Viewport `width=1100` + `scaleCartel()` para móvil
+- Fondo web: `#0F4336` inline en `<style>` del `<head>` — sin `link` a `style.css`
+- `image.jpg` desde mismo repo · viewport `width=1100` + `scaleCartel()`
 
 ---
 
-## Mobile
-- Topband: `flex-wrap:wrap` — fluye en varias líneas
-- Brand slash: `flex-wrap:wrap` desde 700px
-- Events grid: 2 col móvil · 1 col en 420px
-- Hero: foto completa, texto posicionado absolute
+## Logo P13 circular
+- SVG: `logo-p13-circle.svg` — fondo `#82C8E5`, borde rojo, dibujo de Luis
+- JPG: `logo-p13-circle.jpg` 800x800px para archivo/Flickr
+- Favicon: `<link rel="icon" href="logo-p13-circle.svg" type="image/svg+xml">`
+
+---
+
+## Fonema UR en rojo
+```html
+Cult<span style="color:#b01a1a;">ur</span>a
+CULT<span style="color:#b01a1a;">UR</span>ALES
+```
 
 ---
 
 ## GitHub — Seguridad
 - Solo tú puedes modificar/borrar (con tu cuenta)
 - Código visible en público — normal, no es riesgo
-- Para repos privados con Pages → GitHub Pro ~4€/mes
 
-## CNAME — URL personalizada
-1. Archivo `CNAME` en raíz del repo: `rituales.beltzarecords.com`
-2. Karlos: registro DNS CNAME `rituales` → `beltzaexperience.github.io`
-3. GitHub Settings → Pages → Custom domain
+## CNAME pendiente
+- Archivo `CNAME` en repo: `13rituales.beltzarecords.com`
+- Karlos DNS: CNAME `13rituales` → `beltzaexperience.github.io`
+- GitHub Settings → Pages → Custom domain
 
----
-
-## Fonema UR — Identidad Visual Beltza
-El fonema **UR** aparece en rojo `#b01a1a` en todo el texto visible.
-```html
-Cult<span style="color:#b01a1a;">ur</span>a
-CULT<span style="color:#b01a1a;">UR</span>ALES
-```
-
-## Magic Bus — Post Rastros de Júpiter
-- ID: `rastros-4-aniversario`
+## Magic Bus — Post Rastros Mayo 2026
 - Link cartel: `https://beltzaexperience.github.io/13-RITUALES/rastros-jupiter-05-26.html`
 - Comentario: **CLAUDIUS · Siglo I d.C. · Vía Láctea, Brazo de Orión**
-- Número: Magic Bus Nº2 · Secundus
+- Magic Bus Nº2 · Secundus
