@@ -160,9 +160,9 @@ El botón **CRONOLÓGICO** reordena por `data-fecha`.
 - Creado desde `cartel-template.html` (fondo `#0F4336` inline, sin `link` a `style.css`)
 - Evento: OTOÑO FEST · 31/10/26 · 11H TO 19H · eslogan SPACE IS THE PLACE
 - Cartel: DJ'S · SRA. PLÁCIDA Y SR. JÚPITER (formato dúo, sin enlaces, sin live)
-- `rastros-jupiter-31-10-26.jpg` desde mismo repo — dibujo de Mae Jemison sin tratamiento (1690×2576px; sustituye a la foto de la astronauta de 614×960px) · viewport `width=1100` + `scaleCartel()`
+- `rastros-jupiter-31-10-26.jpg` desde mismo repo — dibujo de Mae Jemison sobre el pergamino de URTZ, fundido en multiplicar (1690×2576px; sustituye a la foto de la astronauta de 614×960px) · viewport `width=1100` + `scaleCartel()`
 - Cartel resultante 1100×2445px (imagen más vertical que en carteles anteriores)
-- Tarjeta en `index.html` usa la versión Flickr del dibujo ("MAE JEMISON"): `https://live.staticflickr.com/65535/55589186140_19d16eab51_k.jpg`
+- Tarjeta en `index.html` usa la imagen Flickr `rastros-jupiter-31-10-26` (flic.kr/p/2sGeJCC): `https://live.staticflickr.com/65535/55589308220_b5d22ff080_k.jpg`
 - Sin JPG de imprenta en esta edición
 
 ---
