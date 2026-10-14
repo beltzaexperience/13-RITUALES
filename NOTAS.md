@@ -11,13 +11,20 @@ https://beltzaexperience.github.io/13-RITUALES/
 13-RITUALES/
 ├── index.html                     ← homepage
 ├── style.css                      ← estilos separados
+├── NOTAS.md                       ← este archivo
+├── CNAME                          ← 13rituales.beltzarecords.com
+├── favicon.ico                    ← favicon 13 Rituales
+├── favicon-magic-bus.ico          ← favicon Magic Bus
 ├── logo13.png                     ← logo 13
 ├── logo-p13-circle.svg            ← logo circular P13 (favicon + intro)
 ├── beltza-puno.png                ← puño Beltza
+├── cartel-template.html           ← plantilla genérica de cartel (campos [ENTRE CORCHETES])
 ├── rastros-jupiter-05-26.html     ← cartel Mayo 2026
-├── chicatequila.jpg                ← foto cartel Verano Fest
-├── 29-08-26-verano-fest.html       ← cartel Verano Fest, 29/08/26
-├── verano-fest-29-08-26-IMPRIMIR.jpg ← cartel completo, versión para imprenta (300dpi)
+├── image.jpg                      ← foto cartel Mayo 2026
+├── 29-08-26-verano-fest.html      ← cartel Verano Fest, 29/08/26
+├── CHICATEQUILA-DOPAMINE.jpg      ← foto tratada cartel Verano Fest
+├── 31-10-26-otono-fest.html       ← cartel Otoño Fest, 31/10/26
+├── rastros-jupiter-31-10-26.jpg   ← imagen cartel Otoño Fest (dibujo Mae Jemison)
 └── (futuros carteles .html)
 ```
 
@@ -58,10 +65,10 @@ Intro: `#82C8E5` · Cartel: `#142240` · Fondo cartel web: `#0F4336`
 - Links ámbar · `²` rojo · `flex-wrap:wrap`
 
 ### 2. BRAND SLASH (fondo rojo, centrado)
-`[logo13.png] &nbsp;&nbsp; RITUALES &nbsp;&nbsp; + &nbsp;&nbsp; EJERCICIOS &nbsp;&nbsp; BELTZA &nbsp;&nbsp; [beltza-puno.png]`
+`[logo13.png] &nbsp;&nbsp; RITUALES &nbsp;&nbsp; + &nbsp;&nbsp; EJERCICIOS &nbsp;&nbsp; [beltza-puno.png]`
 - Logo 13: `clamp(3.2rem,9vw,8rem)` · RITUALES/EJERCICIOS: `.b-eventos` (caja negra texto rojo)
-- `+`: blanco `clamp(5rem,14vw,12rem)` · BELTZA: sin caja negro `clamp(2.8rem,7.8vw,6.5rem)`
-- Puño: `beltza-puno.png` · Todo `justify-content:center`
+- `+`: blanco `clamp(5rem,14vw,12rem)`
+- Puño: `beltza-puno.png` (el `index.html` lo carga desde el repo `TALLERES-HERIOTZA-`) · Todo `justify-content:center`
 
 ### 3. MARQUEE TOP — negro, texto blanco, 55s
 
@@ -84,8 +91,8 @@ Intro: `#82C8E5` · Cartel: `#142240` · Fondo cartel web: `#0F4336`
 - Tarjetas: borde rojo 2px · padding 4px · pie fondo `#142240`
 - Título: `flex:1` `text-overflow:ellipsis` · Link: **Ver →** ámbar `flex-shrink:0`
 - Testimonios: `rgba(176,26,26,0.04)` borde ámbar · Playfair itálica blanca
-- Contador dinámico (cuenta `.event-card`)
-- Header: `010 RITUALES VUDÚ-BEAT + EJERCICIOS AFRO-ESPIRITUALES` centrado
+- Contador dinámico (cuenta todos los `.event-card`, testimonios incluidos)
+- Header: `[contador] RITUALES VUDÚ-BEAT + EJERCICIOS AFRO-ESPIRITUALES` centrado
 - Botón **CRONOLÓGICO** — ordena por `data-fecha` asc/desc
 
 ### 8. MARQUEE BOTTOM — mismo que top · línea roja 4px encima
@@ -96,17 +103,20 @@ Intro: `#82C8E5` · Cartel: `#142240` · Fondo cartel web: `#0F4336`
 
 ---
 
-## Carteles en el grid (orden HTML, más reciente primero)
+## Carteles en el grid (en el mismo orden que en index.html)
 | data-fecha | Título | Link |
 |---|---|---|
+| 2026-10 | Rastros de Júpiter · Otoño Fest | `13-RITUALES/31-10-26-otono-fest.html` |
 | 2026-08 | Rastros de Júpiter · Verano Fest | `13-RITUALES/29-08-26-verano-fest.html` |
 | 2026-05 | Rastros de Júpiter | `13-RITUALES/rastros-jupiter-05-26.html` |
+| — | *Testimonio Enriqueta* | — |
 | 2026-01 | Rastros de Júpiter | beltzablog/740 |
 | 2025-12 | Amairu Bizi · Ripe Red Apple | beltzablog/737 |
-| 2025-08 | Talleres Heriötza | beltzablog/732 |
+| 2025-09 | Talleres Heriötza | beltzablog/732 |
+| 2025-03 | Amairu Bizi · NI | beltzablog/731 |
 | 2025-08 | Rastros de Júpiter | beltzablog/730 |
 | 2025-05 | Rastros de Júpiter | beltzablog/729 |
-| 2025-03 | Amairu Bizi · NI | beltzablog/731 |
+| — | *Testimonio Kikillo* | — |
 | 2025-03 | Rastros de Júpiter (cartel) | beltzablog/726 |
 | 2025-03 | La Momia Trio Ensemble | beltzablog/726 |
 | 2025-01 | Amairu Bizi · Joseba Irazoki | beltzablog/723 |
@@ -114,14 +124,19 @@ Intro: `#82C8E5` · Cartel: `#142240` · Fondo cartel web: `#0F4336`
 | 2024-10 | Amairu Bizi · Victor Herrero | beltzablog/721 |
 | 2024-08 | El Circo de Júpiter | beltzablog/688 |
 
+Total: 15 carteles + 2 testimonios = 17 tarjetas (el contador muestra 017).
+Talleres Heriötza: 2025-09 según beltzablog/732 (publicado 23/09/25, primer taller 30/09/25).
+El botón **CRONOLÓGICO** reordena por `data-fecha`.
+
 ### Testimonios intercalados
 - Enriqueta (Mayo 2025) — entre Rastros Mayo 2026 y Rastros Enero 2026
-- Kikillo (Mayo 2025) — al final del grid
+- Kikillo (Mayo 2025) — entre Rastros Mayo 2025 y Rastros Marzo 2025 (cartel)
 
 ---
 
 ## Añadir nuevo cartel
-1. Subir `.html` o foto a repo / Flickr
+0. Partir de `cartel-template.html` (rellenar campos `[ENTRE CORCHETES]`)
+1. Subir `.html` o foto a repo / Flickr — nombres de archivo sin tildes ni eñes
 2. Añadir tarjeta en `.events-grid` con `data-fecha="AAAA-MM"`
 3. Contador sube automáticamente
 4. Actualizar link en Magic Bus si tiene post
@@ -136,10 +151,19 @@ Intro: `#82C8E5` · Cartel: `#142240` · Fondo cartel web: `#0F4336`
 - Mismo template que el cartel de mayo 2026 (fondo `#0F4336` inline, sin `link` a `style.css`)
 - Evento: VERANO FEST · 29/08/26 · 11H TO 20H
 - Cartel: CHICA TEQUILA · DJ (link IG `la_chica_tequila`) + DOPAMINE · LIVE (sin link — pendiente confirmar redes)
-- `chicatequila.jpg` desde mismo repo — versión definitiva tratada: foto original (3024×4032) + 8 cápsulas DOPAMINE compuestas a mano (7 flotando estilo collage sobre las baldas desenfocadas de discos, respetando cara/cubetas/vestido/disco sujetado; 1 integrada como tatuaje real en el antebrazo, sin sombra, siguiendo el ángulo exacto del brazo) · viewport `width=1100` + `scaleCartel()`
+- `CHICATEQUILA-DOPAMINE.jpg` desde mismo repo — versión definitiva tratada: foto original (3024×4032) + 8 cápsulas DOPAMINE compuestas a mano (7 flotando estilo collage sobre las baldas desenfocadas de discos, respetando cara/cubetas/vestido/disco sujetado; 1 integrada como tatuaje real en el antebrazo, sin sombra, siguiendo el ángulo exacto del brazo) · viewport `width=1100` + `scaleCartel()`
 - Tarjeta en `index.html` events-grid usa la versión Flickr de la foto tratada: `https://live.staticflickr.com/65535/55463708569_7021e7d973_k.jpg` ("CHICA TEQUILA + DOPAMINE")
-- **Subir a `13-RITUALES`:** el JPG completo `verano-fest-29-08-26-IMPRIMIR.jpg` (cartel entero con foto tratada, 3300×6753px/300dpi) + la nueva `chicatequila.jpg` tratada — NO la foto suelta de Chica Tequila
+- JPG de imprenta `verano-fest-29-08-26-IMPRIMIR.jpg` (cartel entero con foto tratada, 3300×6753px/300dpi): generado, no está en el repo
 - Pendiente: si Dopamine confirma Bandcamp/redes, enlazar igual que Chica Tequila
+
+## Cartel 31-10-26-otono-fest.html
+- Creado desde `cartel-template.html` (fondo `#0F4336` inline, sin `link` a `style.css`)
+- Evento: OTOÑO FEST · 31/10/26 · 11H TO 19H · eslogan SPACE IS THE PLACE
+- Cartel: DJ'S · SRA. PLÁCIDA Y SR. JÚPITER (formato dúo, sin enlaces, sin live)
+- `rastros-jupiter-31-10-26.jpg` desde mismo repo — dibujo de Mae Jemison sin tratamiento (1690×2576px; sustituye a la foto de la astronauta de 614×960px) · viewport `width=1100` + `scaleCartel()`
+- Cartel resultante 1100×2445px (imagen más vertical que en carteles anteriores)
+- Tarjeta en `index.html` usa la versión Flickr del dibujo ("MAE JEMISON"): `https://live.staticflickr.com/65535/55589186140_19d16eab51_k.jpg`
+- Sin JPG de imprenta en esta edición
 
 ---
 
